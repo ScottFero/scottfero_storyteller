@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scott Fero - Storyteller</title>
+    <link rel="stylesheet" href="home.css">
+    
+<script>
+    const body = document.querySelector("body"),
+        nav = document.querySelector("nav"),
+        modeToggle = document.querySelector(".dark-light"),
+        searchToggle = document.querySelector(".searchToggle"),
+        sidebarOpen = document.querySelector(".sidebarOpen"),
+        siderbarClose = document.querySelector(".siderbarClose");
+    let getMode = localStorage.getItem("mode");
+    if (getMode && getMode === "dark-mode") {
+        body.classList.add("dark");
+    }
+    // js code to toggle dark and light mode
+    modeToggle.addEventListener("click", () => {
+        modeToggle.classList.toggle("active");
+        body.classList.toggle("dark");
+        // js code to keep user selected mode even page refresh or file reopen
+        if (!body.classList.contains("dark")) {
+            localStorage.setItem("mode", "light-mode");
+        } else {
+            localStorage.setItem("mode", "dark-mode");
+        }
+    });
+    // js code to toggle search box
+    searchToggle.addEventListener("click", () => {
+        searchToggle.classList.toggle("active");
+    });
+
+
+    //   js code to toggle sidebar
+    sidebarOpen.addEventListener("click", () => {
+        nav.classList.add("active");
+    });
+    body.addEventListener("click", e => {
+        let clickedElm = e.target;
+        if (!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")) {
+            nav.classList.remove("active");
+        }
+    });
+</script>
+
+</head>
+<body>
+   <div class=widthset>
+    <!--Nav Bar-->
+        <nav>
+        <div class="nav-bar">
+            <i class='bx bx-menu sidebarOpen' ></i>
+            <img src="images/Logo%20-%20Scott%20Fero.png" alt="Portal Logo" class="logo">
+            <span class="logo navLogo" style="max-width:100%; margin-left:-20em"><a href="home.html">Scott Fero - Storyteller</a></span>
+            <div class="menu">
+                <div class="logo-toggle">
+                    <span class="logo"><a href="#">Logo</a></span>
+                    <i class='bx bx-x siderbarClose'></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Stories</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--Intro-->
+    <img src="images/Creative%20Resume%20Background%20Lightened.png" alt="Title Card Of The Realm Walker At Present" class="fullspan">
+    <!--Projects-->
+    <!--Temp White Space-->
+<p class="whitespace"></p>
+    <!--Stories-->
+    </div>
+</body>
+</html>
